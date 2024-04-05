@@ -1,0 +1,14 @@
+line 25: changed n=10 to n=15. wandb now processes 15 images
+
+line 31, 37: created a random generator para hindi na puro tench, Tinca tinca yung nasa wandb. also, 
+different training means different examples ng images sa data
+
+line 59: removed --no-wandb kasi need natin ng wandb by default
+
+line 75: changed args = parser.parse_args("") to args = parser.parse_args()
+for some reason hindi nade-detect yung modified parameters dahil dun sa ("")
+
+line 133, 136: let's now use devices=[args.devices] instead of devices=args.devices
+one bug i noticed in our code is that it can't run on more than one gpu
+creating list just means we are specifying on what gpu to use, example:
+device_num = [2] means you are using GPU 2

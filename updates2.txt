@@ -1,0 +1,36 @@
+__main__.py updates:
+
+lines 98-158:
+- added the base model function for students. students can modify the function assigned
+to them
+
+lines 166-181:
+- included other students who are already assigned to different models
+
+===========================================
+
+litmodels.py updates:
+
+lines 54-58 (configure_optimizers function):
+- added scheduler and modified the optimizer according to MY model's recipe. 
+students are required to modify this part to replicate their model's recipe
+- modify the optimizer and scheduler according to what is used in the recipe
+
+
+===========================================
+
+litdataloader.py updates:
+
+line 22: used the default resize 256
+line 23: used the default crop 224 
+line 24: added autoaugment in transformation
+-- autoaugment nabasa ko is adding extra random datasets augmented from our datasets 
+to avoid overfitting
+
+lines 29-35: added transform for val and test, this is without the autoaugment since
+for test and validation lang naman
+
+lines 65 and 74: changed to shuffle=True
+* i'm trying to use this para randomized yung runs.summary natin sa wandb. as of now,
+wala pa naman ako nakikitang effect nito sa mismong training.
+* i'm still skeptical though kung tama ba na ginawa ko to HAHAHA
