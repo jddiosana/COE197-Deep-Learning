@@ -1,0 +1,63 @@
+This tutorial assumes that you are already able to log in to your SSH server and that 
+you already have a wandb account logged on to your VSCode.
+
+1. Open terminal and log in to your SSH server
+2. type "tmux" and press enter (remove quotation marks)
+3. After pressing enter, a tmux session terminal will appear.
+4. (Optional) Activate your virtual environment 
+5. (Optional) If the Reproducibility folfer is inside another folder, type
+"cd folder1", where folder1 is the name of the folder containing Reproducibility 
+(if folder1 is inside another folder, use cd folder2/folder1, and so on)
+6. you are now ready to run the deep learning algorithm. run the code by typing
+
+python3 Reproducibility --surname=your_surname --devices=device_assigned --...
+
+where your_surname is your_surname (lowercase) and device_assigned is the device that
+is allocated for you. You can also modify other parameters (e.g., typing --batch-size=512
+--num_classes=64 --lr=0.1) using values of your own choice, although there are already
+default values programmed inside the code (check get_args function for the default values)
+
+press enter.
+
+7. To check if you successfully ran the algorithm, please wait for at least 3 minutes.
+You should see something similar to this:
+
+[[picture]]
+
+8. If your terminal is similar to the image above, you are able to successfully run the training
+algorithm. Congratulations!
+
+9. To check the status of your training, go to wandb.ai/home and look for the Runs that is in
+"running" state. That is where you can see the progress of your model that is in training
+
+WARNING: Do NOT copy the link that appears on your terminal using ctrl+C. The command
+ctrl+C will interrupt the process running in the terminal, which might cause you to lose your
+current progress and restart the training process again.
+
+10. You can now detach from the tmux session. To detach from the session, press
+ctrl+B and press D. You will now return to your SSH terminal session.
+
+Take note of the session number as you will use it later when reconnecting to the tmux terminal.
+
+11. Type logout to log out of the SSH server and close your terminal.
+
+12. Check that your progress is still running in wandb.ai
+
+
+Additional:
+Reattaching to tmux 
+1. Open your terminal and log in to your SSH server
+2. Type "tmux attach-session -t session_number", where session_number is the session number
+of the training algorithm you are running
+
+
+Stopping the training algorithm
+1. Open the tmux session of the algorithm you are running
+2. Press ctrl+C and wait for at least 2 minutes. You will see that the algorithm is
+finishing up its training. 
+3. You can find your model inside 197-Deep-Learning/checkpoints directory of your server.
+The model is named "reproducibility-yoursurname-best-acc.ckpt."
+4. Go back to the tmux session and stop the session. To stop the session, press
+ctrl+b, and then press shift+;, type "kill-session". Log out of your server
+
+
